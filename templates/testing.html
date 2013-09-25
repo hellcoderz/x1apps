@@ -7,24 +7,75 @@
 
  <script type="text/javascript">
 
- 	function dosomething(){
+ 	var LEN = -1
+
+ 	function dosomethingright(){
 
  		//alert("hello");
 
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
-		    var currentZone = document.getElementById("maintabs");
-		    var currentItem = $(currentZone).find(".nav-current-item");
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
 		    //console.log(currentItem);
-		    var nextItem =  currentItem.next();
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = len-1;
+		    }else{
+		    	LEN = LEN - 1;
+		    }
+
+		    if(LEN == 0){
+		    	LEN = 3
+		    }
+
+		    console.log(LEN);
 		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		}
+	}
+
+	function dosomethingleft(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = 1;
+		    }else{
+		    	LEN = LEN + 1;
+		    }
+
+		    if(LEN == 4){
+		    	LEN = 1
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");
 		}
 	}
 
 	function init_mt(){
-		Mousetrap.bind('right', function() { dosomething(); });
+		Mousetrap.bind('right', function() { dosomethingright(); });
+		Mousetrap.bind('left', function() { dosomethingleft(); });
 	}
 
 
@@ -43,7 +94,7 @@
 
 
 <body onload="init_mt()">
-	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list">
+	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
 	    <span class="tab nav-current-item">Tab 1</span>
 	    <span class="tab">Tab 2</span>
 	    <span class="tab">Tab 3</span>
