@@ -13,9 +13,10 @@
 
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
-		    var currentItem = $(".tabs").find("nav-current-item");
-		    console.log(currentItem);
-		    var nextItem =  $(currentItem).next();
+		    var currentZone = document.getElementById("maintabs");
+		    var currentItem = $(currentZone).find(".nav-current-item");
+		    //console.log(currentItem);
+		    var nextItem =  currentItem.next();
 		    //console.log(nextItem);
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");

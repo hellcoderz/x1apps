@@ -25,3 +25,12 @@ INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:08:58] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:08:58] "GET /static/css/style.css HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:08:58] "GET /static/js/mousetrap.js HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:09:07] "GET /test HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug: * Running on http://0.0.0.0:5000/
+INFO:werkzeug: * Restarting with reloader
+INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:17:00] "GET /test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:18:25] "GET /test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:18:25] "GET /static/js/mousetrap.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:21:30] "GET /test HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Sep/2013 17:21:30] "GET /static/js/mousetrap.js HTTP/1.1" 304 -
