@@ -13,6 +13,10 @@ logging.basicConfig(filename='example.log',level=logging.DEBUG)
 def index():
 	return render_template("index.html")
 
+@app.route("/test", methods = ["POST","GET"])
+def test():
+	return "test"
+
 
 if __name__ == "__main__":
 	app.debug = True
