@@ -1,0 +1,51 @@
+<html>
+
+ <script src="static/js/mousetrap.js">
+ </script> 
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+ <script type="text/javascript">
+
+ 	function dosomething(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentItem = $(".tabs").find("nav-current-item");
+		    console.log(currentItem);
+		    var nextItem =  $(currentItem).next();
+		    //console.log(nextItem);
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		}
+	}
+
+	function init_mt(){
+		Mousetrap.bind('right', function() { dosomething(); });
+	}
+
+
+</script>
+
+<style type="text/css">
+
+	.tab {
+		color: red;
+	}
+	.nav-current-item{
+		color: blue;
+	}
+
+</style>
+
+
+<body onload="init_mt()">
+	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list">
+	    <span class="tab nav-current-item">Tab 1</span>
+	    <span class="tab">Tab 2</span>
+	    <span class="tab">Tab 3</span>
+	</div>
+</body>
+</html>

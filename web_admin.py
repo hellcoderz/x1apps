@@ -15,7 +15,7 @@ def index():
 
 @app.route("/test", methods = ["POST","GET"])
 def test():
-	return "test"
+	return render_template("testing.html")
 
 
 if __name__ == "__main__":
