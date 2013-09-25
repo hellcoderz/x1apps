@@ -73,9 +73,27 @@
 		}
 	}
 
+
+	function dosomethingenter(){
+			//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    var url = $(currentItem.children()[0]).attr("href")
+		    console.log(url);
+		    window.location = url;
+		}
+	}
+
 	function init_mt(){
 		Mousetrap.bind('right', function() { dosomethingright(); });
 		Mousetrap.bind('left', function() { dosomethingleft(); });
+		Mousetrap.bind('enter', function() { dosomethingenter(); });
 	}
 
 
@@ -87,17 +105,20 @@
 		color: red;
 	}
 	.nav-current-item{
-		color: blue;
+		border-style:solid;
+		border-width:5px;
 	}
+
 
 </style>
 
 
 <body onload="init_mt()">
 	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
-	    <span class="tab nav-current-item">Tab 1</span>
-	    <span class="tab">Tab 2</span>
-	    <span class="tab">Tab 3</span>
+	    <div class="tab nav-current-item"><a href="//www.youtube.com/embed/o9EX2XkpPgE?autoplay=1">Video 1</a></div>
+	    <div class="tab"><a href="//www.youtube.com/embed/o9EX2XkpPgE?autoplay=1">Video 2</a></div>
+	    <div class="tab"><a href="//www.youtube.com/embed/o9EX2XkpPgE?autoplay=1">Video 3</a></div>
 	</div>
+
 </body>
 </html>
