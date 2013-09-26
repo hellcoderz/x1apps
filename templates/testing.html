@@ -25,6 +25,7 @@
 
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
+		    pageScrollDown();
 		    var currentZone = $("#maintabs");
 		    var currentItem = currentZone.find(".nav-current-item");
 		    //console.log(currentItem);
@@ -39,6 +40,7 @@
 
 		    if(LEN == 0){
 		    	LEN = len
+		    	window.scroll(0,0);
 		    }
 
 		    console.log(LEN);
@@ -48,7 +50,7 @@
 
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");
-		    pageScrollDown();
+		    
 		}
 	}
 
@@ -58,6 +60,7 @@
 
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
+		    pageScrollUp();
 		    var currentZone = $("#maintabs");
 		    var currentItem = currentZone.find(".nav-current-item");
 		    //console.log(currentItem);
@@ -72,6 +75,7 @@
 
 		    if(LEN == len+1){
 		    	LEN = 1
+		    	window.scrollBy(0,10000);
 		    }
 
 		    console.log(LEN);
@@ -81,7 +85,7 @@
 
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");
-		    pageScrollUp();
+		    
 		}
 	}
 
