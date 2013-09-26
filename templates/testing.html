@@ -28,7 +28,7 @@
 		    }
 
 		    if(LEN == 0){
-		    	LEN = 3
+		    	LEN = len
 		    }
 
 		    console.log(LEN);
@@ -59,7 +59,7 @@
 		    	LEN = LEN + 1;
 		    }
 
-		    if(LEN == 4){
+		    if(LEN == len+1){
 		    	LEN = 1
 		    }
 
@@ -91,6 +91,11 @@
 	}
 
 	function init_mt(){
+		var currentZone = $("#maintabs");
+		var firstChild = currentZone.children()[0]
+		$(firstChild).addClass("nav-current-item");
+
+
 		Mousetrap.bind('down', function() { dosomethingright(); });
 		Mousetrap.bind('up', function() { dosomethingleft(); });
 		Mousetrap.bind('enter', function() { dosomethingenter(); });
@@ -109,16 +114,78 @@
 		border-width:5px;
 	}
 
+	.area { 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  padding-left: 10px;
+	  padding-right: 0px;
+	  position: relative;
+	}
+
+	.bubble { 
+	  position: relative; 
+	   
+	  width: 1500px; 
+	  height: 100px; 
+	  display: table; 
+	}
+
+	.bubble img {
+	  display: table-cell; 
+	  vertical-align: left; 
+	  text-align: center; 
+	}
+
+	.title {
+		color: "black";
+		padding-left: 10px;
+	}
+
+	.desc {
+		color: "black";
+		padding-left: 10px;
+	}
+
+	a:link{
+	  color:none;
+	}
+	a:visited{
+	  color:none;
+	}
+	a:hover{
+	  color:none;
+	}
+	a:focus{
+	  color:none;
+	}
+	a:active{
+	  color:none;
+	}
+
+	
+
 
 </style>
 
 
 <body onload="init_mt()">
 	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
-	    <div class="tab nav-current-item"><a href="//www.youtube.com/embed/Tfy5CBfjZ8s?autoplay=1&fs=1&autohide=1&controls=0&rel=0">Video 1</a></div>
-	    <div class="tab"><a href="//www.youtube.com/embed/lX6JcybgDFo?autoplay=1&fs=1&autohide=1&controls=0&rel=0">Video 2</a></div>
-	    <div class="tab"><a href="//www.youtube.com/embed/o9EX2XkpPgE?autoplay=1&fs=1&autohide=1&controls=0&rel=0">Video 3</a></div>
+	    {% for item in data %}
+		<div class="area">
+			<a href="//{{item[0]}}">
+				<div class="bubble">
+					<img src="{{item[1]}}" alt="{{item[2]}}" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">{{item[2]}}</span><br><br>
+						<span class="desc">{{item[3]}}</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+
 	</div>
+
 
 </body>
 </html>

@@ -4,9 +4,11 @@ from flask import render_template
 import logging
 import json
 
+from youtube import youtube_search
+
 
 app = Flask(__name__)
-logging.basicConfig(filename='example.log',level=logging.DEBUG)
+#logging.basicConfig(filename='example.log',level=logging.DEBUG)
 
 
 @app.route("/", methods = ["POST","GET"])
@@ -15,7 +17,8 @@ def index():
 
 @app.route("/test", methods = ["POST","GET"])
 def test():
-	return render_template("testing.html")
+	data = youtube_search()
+	return render_template("testing.html", data=data)
 
 
 if __name__ == "__main__":
