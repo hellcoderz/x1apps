@@ -1,0 +1,281 @@
+
+<html>
+
+ <script src="static/js/mousetrap.js">
+ </script> 
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+ <script type="text/javascript">
+
+ 	var LEN = -1
+
+ 	function dosomethingright(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = len-1;
+		    }else{
+		    	LEN = LEN - 1;
+		    }
+
+		    if(LEN == 0){
+		    	LEN = len
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		}
+	}
+
+	function dosomethingleft(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = 1;
+		    }else{
+		    	LEN = LEN + 1;
+		    }
+
+		    if(LEN == len+1){
+		    	LEN = 1
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		}
+	}
+
+
+	function dosomethingenter(){
+			//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    var url = $(currentItem.children()[0]).attr("href")
+		    console.log(url);
+		    window.location = url;
+		}
+	}
+
+	function init_mt(){
+		var currentZone = $("#maintabs");
+		var firstChild = currentZone.children()[0]
+		$(firstChild).addClass("nav-current-item");
+
+
+		Mousetrap.bind('down', function() { dosomethingright(); });
+		Mousetrap.bind('up', function() { dosomethingleft(); });
+		Mousetrap.bind('enter', function() { dosomethingenter(); });
+	}
+
+
+</script>
+
+<style type="text/css">
+
+	body {
+		background-color: black;
+	}
+
+	.tab {
+		color: red;
+	}
+	.nav-current-item{
+		border-style:solid;
+		border-width:5px;
+		border-color: red;
+	}
+
+	.area { 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  padding-left: 10px;
+	  padding-right: 0px;
+	  position: relative;
+	}
+
+	.bubble { 
+	  position: relative; 
+	   
+	  width: 1500px; 
+	  height: 100px; 
+	  display: table; 
+	}
+
+	.bubble img {
+	  display: table-cell; 
+	  vertical-align: left; 
+	  text-align: center; 
+	}
+
+	.title {
+		color: white;
+		padding-left: 10px;
+	}
+
+	.desc {
+		color: white;
+		padding-left: 10px;
+	}
+
+	a:link{
+	  color:none;
+	}
+	a:visited{
+	  color:none;
+	}
+	a:hover{
+	  color:none;
+	}
+	a:focus{
+	  color:none;
+	}
+	a:active{
+	  color:none;
+	}
+
+	
+
+
+</style>
+
+
+<body onload="init_mt()">
+	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
+	    
+		<div class="area">
+			<a href="//www.youtube.com/embed/4_X6EyqXa2s?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/4_X6EyqXa2s/hqdefault.jpg" alt="GOOGLE GLASS SUCKS!" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">GOOGLE GLASS SUCKS!</span><br><br>
+						<span class="desc">Bloopers &amp; Deleted Scenes: http://smo.sh/GlassXTRAS DOWNLOAD OUR NEW GAME: http://smo.sh/HeadEsploder CHECK OUT THE SMOSH STORE: ...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/V6Tsrg_EQMw?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/V6Tsrg_EQMw/hqdefault.jpg" alt="I used Google Glass" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">I used Google Glass</span><br><br>
+						<span class="desc">Joshua Topolsky spends a day with two of Google Glass&#39; creators and goes up close and personal with the company&#39;s visionary new computer. Read the full ...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/9No-FiEInLA?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/9No-FiEInLA/hqdefault.jpg" alt="Google interns&#39; first week" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">Google interns&#39; first week</span><br><br>
+						<span class="desc">Students who join Google in internships or in full-time roles work on interesting, meaningful projects and are expected to have an impact from the start. Mee...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/z4LvJOFTlGo?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/z4LvJOFTlGo/hqdefault.jpg" alt="Google Now vs. Siri: The results speak for themselves" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">Google Now vs. Siri: The results speak for themselves</span><br><br>
+						<span class="desc">http://cnet.co/16CSssc Watch as we pit Siri against **Google Now** in a live test to find out which one offers the fastest, most accurate, and richest voice ...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/seX7jYI96GE?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/seX7jYI96GE/hqdefault.jpg" alt="Google I/O 2011: Learning to Love JavaScript" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">Google I/O 2011: Learning to Love JavaScript</span><br><br>
+						<span class="desc">Alex Russell JavaScript remains one of the most popular and important programming languages in history. Web Developer and Chrome Engineer Alex Russell ...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/dj7W2FmfY4g?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/dj7W2FmfY4g/hqdefault.jpg" alt="Google Glass Review" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">Google Glass Review</span><br><br>
+						<span class="desc">Unboxing and testing out Google Glass! LIKE IT! :D PREV: http://www.youtube.com/watch?v=n3mabUQ4sZg SUBSCRIBE: ...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/nuiE0hc77NY?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/nuiE0hc77NY/hqdefault.jpg" alt="10 Strange Discoveries On Google Earth" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">10 Strange Discoveries On Google Earth</span><br><br>
+						<span class="desc">10 Strange Discoveries On Google Earth From giant rabbits to cruise missile tests, here are 10 of the strangest things found on Google Earth. If anyone wants...</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="area">
+			<a href="//www.youtube.com/embed/4EvNxWhskf8?autoplay=1&amp;fs=1&amp;autohide=1&amp;controls=0&amp;rel=0">
+				<div class="bubble">
+					<img src="https://i.ytimg.com/vi/4EvNxWhskf8/hqdefault.jpg" alt="Google Glass How-to: Getting Started" width="100px" height="100px" style="float:left"></img>
+					<div>
+						<span class="title">Google Glass How-to: Getting Started</span><br><br>
+						<span class="desc">An introduction to the basics of Google Glass. Learn about the touchpad, the timeline and how to share through Glass.</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+
+	</div>
+
+
+</body>
+</html>
