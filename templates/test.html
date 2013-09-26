@@ -10,7 +10,17 @@
 
  	var LEN = -1
 
- 	function dosomethingright(){
+ 	function pageScrollDown() {
+    	window.scrollBy(0,50); // horizontal and vertical scroll increments
+    	
+	}
+
+	function pageScrollUp() {
+    	window.scrollBy(0,-50); // horizontal and vertical scroll increments
+    	
+	}
+
+ 	function dosomethingdown(){
 
  		//alert("hello");
 
@@ -39,10 +49,11 @@
 
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");
+		    pageScrollDown();
 		}
 	}
 
-	function dosomethingleft(){
+	function dosomethingup(){
 
  		//alert("hello");
 
@@ -71,6 +82,7 @@
 
 		    $(currentItem).removeClass("nav-current-item");
 		    $(nextItem).addClass("nav-current-item");
+		    pageScrollUp();
 		}
 	}
 
@@ -88,6 +100,7 @@
 		    var url = $(currentItem.children()[0]).attr("href")
 		    console.log(url);
 		    window.location = url;
+		    pageScroll();
 		}
 	}
 
@@ -97,12 +110,10 @@
 		$(firstChild).addClass("nav-current-item");
 
 
-		Mousetrap.bind('down', function() { dosomethingright(); });
-		Mousetrap.bind('up', function() { dosomethingleft(); });
+		Mousetrap.bind('down', function() { dosomethingdown(); });
+		Mousetrap.bind('up', function() { dosomethingup(); });
 		Mousetrap.bind('enter', function() { dosomethingenter(); });
 	}
-
-
 </script>
 
 <style type="text/css">
