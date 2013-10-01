@@ -1,0 +1,206 @@
+<html>
+
+	<script src="mousetrap.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="search.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+ <script type="text/javascript">
+
+ 	var LEN = -1
+
+ 	function pageScrollDown() {
+    	window.scrollBy(0,50); // horizontal and vertical scroll increments
+    	
+	}
+
+	function pageScrollUp() {
+    	window.scrollBy(0,-50); // horizontal and vertical scroll increments
+    	
+	}
+
+ 	function dosomethingdown(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    pageScrollDown();
+		    var currentZone = $("#list_field");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = len-1;
+		    }else{
+		    	LEN = LEN - 1;
+		    }
+
+		    if(LEN == 0){
+		    	LEN = len
+		    	window.scroll(0,0);
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		    
+		}
+	}
+
+	function dosomethingup(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    pageScrollUp();
+		    var currentZone = $("#list_field");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = 1;
+		    }else{
+		    	LEN = LEN + 1;
+		    }
+
+		    if(LEN == len+1){
+		    	LEN = 1
+		    	window.scrollBy(0,10000);
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		    
+		}
+	}
+
+
+	function dosomethingenter(){
+			//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#list_field");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    var url = $(currentItem).attr("href")
+		    console.log(url);
+		    window.location = url;
+		    
+		}
+	}
+
+	function init_mt(){
+		Mousetrap.bind('down', function() { dosomethingdown(); });
+		Mousetrap.bind('up', function() { dosomethingup(); });
+		Mousetrap.bind('enter', function() { dosomethingenter(); });
+
+
+		
+	}
+
+
+</script>
+
+<style type="text/css">
+
+	body {
+		background-color: black;
+	}
+
+	.tab {
+		color: red;
+	}
+	.nav-current-item{
+		border-style:solid;
+		border-width:5px;
+		border-color: red;
+	}
+
+	.area { 
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  padding-left: 10px;
+	  padding-right: 0px;
+	  position: relative;
+	}
+
+	.bubble { 
+	  position: relative; 
+	   
+	  width: 1000px; 
+	  height: 100px; 
+	  display: table; 
+	}
+
+	.bubble img {
+	  display: table-cell; 
+	  vertical-align: left; 
+	  text-align: center; 
+	}
+
+	.title {
+		color: white;
+		padding-left: 10px;
+	}
+
+	.desc {
+		color: white;
+		padding-left: 10px;
+		white-space: nowrap;
+		width: 500px;
+
+	}
+
+	a:link{
+	  color:none;
+	}
+	a:visited{
+	  color:none;
+	}
+	a:hover{
+	  color:none;
+	}
+	a:focus{
+	  color:none;
+	}
+	a:active{
+	  color:none;
+	}
+
+	
+
+
+</style>
+
+
+<body onload="init_mt()">
+	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
+	   
+		<div class="area" id="list_field">
+			
+		</div>
+		
+
+	</div>
+
+
+</body>
+</html>
