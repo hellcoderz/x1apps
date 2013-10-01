@@ -42,14 +42,19 @@ googleApiClientReady = function() {
 
 function getQueryVariable(variable) {
     var query = document.URL;
-    var vars = query.split('?')[1];
-    var maps = vars.split("&");
-    for (var i = 0; i < maps.length; i++) {
-        var pair = maps[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable) {
-          console.log("query= "+ decodeURIComponent(pair[1]));
-            return decodeURIComponent(pair[1]);
-        }
+    var arr = query.split('?');
+    if(arr.length > 1){
+      var vars = arr[1];
+      var maps = vars.split("&");
+      for (var i = 0; i < maps.length; i++) {
+          var pair = maps[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+            console.log("query= "+ decodeURIComponent(pair[1]));
+              return decodeURIComponent(pair[1]);
+          }
+      }
+    }else{
+      return "cats";
     }
     console.log('Query variable %s not found', variable);
 }
