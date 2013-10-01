@@ -54,7 +54,7 @@ function search() {
     q: q,
     part: 'snippet',
     key:"AIzaSyDdUOGutOhweA_X4qU5jhsAQvBMfMVmxAA",
-    maxResults:25
+    maxResults:15
   });
 
   var res = null;
