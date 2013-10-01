@@ -39,17 +39,33 @@ googleApiClientReady = function() {
   
 }
 
+
+function getQueryVariable(variable) {
+    var query = document.URL;
+    var vars = query.split('?')[1];
+    var maps = vars.split("&");
+    for (var i = 0; i < maps.length; i++) {
+        var pair = maps[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+          console.log("query= "+ decodeURIComponent(pair[1]));
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
 function loadAPIClientInterfaces() {
       
       gapi.client.load('youtube', 'v3', function() {
-        res = search();
+        res = search(getQueryVariable("q"));
       });
   }
 
 // Search for a given string.
-function search() {
+function search(query) {
   // var q = $('#query').val();
-  var q = "cats"
+
+  var q = query;
   var request = gapi.client.youtube.search.list({
     q: q,
     part: 'snippet',
@@ -60,12 +76,12 @@ function search() {
   var res = null;
   request.execute(function(response) {
     res = response.result
-    console.log(res["items"]);
+    //console.log(res["items"]);
     var str = JSON.stringify(response.result);
     add_result_to_list(res)
     var currentZone = $("#maintabs");
     var firstChild = currentZone.children()[0]
-    console.log(firstChild)
+    //console.log(firstChild)
     $(firstChild).addClass("nav-current-item");
     //$('#search-container').html('<pre>' + str + '</pre>');
   });
