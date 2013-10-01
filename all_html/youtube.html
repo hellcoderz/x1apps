@@ -10,12 +10,12 @@
  	var LEN = -1
 
  	function pageScrollDown() {
-    	window.scrollBy(0,30); // horizontal and vertical scroll increments
+    	window.scrollBy(0,50); // horizontal and vertical scroll increments
     	
 	}
 
 	function pageScrollUp() {
-    	window.scrollBy(0,-30); // horizontal and vertical scroll increments
+    	window.scrollBy(0,-50); // horizontal and vertical scroll increments
     	
 	}
 
@@ -26,7 +26,7 @@
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
 		    pageScrollDown();
-		    var currentZone = $("#list_field");
+		    var currentZone = $("#maintabs");
 		    var currentItem = currentZone.find(".nav-current-item");
 		    //console.log(currentItem);
 		    
@@ -61,7 +61,7 @@
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
 		    pageScrollUp();
-		    var currentZone = $("#list_field");
+		    var currentZone = $("#maintabs");
 		    var currentItem = currentZone.find(".nav-current-item");
 		    //console.log(currentItem);
 		    
@@ -75,7 +75,7 @@
 
 		    if(LEN == len+1){
 		    	LEN = 1
-		    	window.scrollBy(0,100000);
+		    	window.scrollBy(0,10000);
 		    }
 
 		    console.log(LEN);
@@ -95,15 +95,15 @@
 
 		if($(".nav-current-zone").data("nav-type") === "list"){
 		    //console.log($("#maintabs"));
-		    var currentZone = $("#list_field");
+		    var currentZone = $("#maintabs");
 		    var currentItem = currentZone.find(".nav-current-item");
-		    console.log(currentItem);
+		    //console.log(currentItem);
 		    
 		    var len = currentZone.children().length;
-		    var url = $(currentItem).attr("href")
+		    var url = $(currentItem.children()[0]).attr("href")
 		    console.log(url);
 		    window.location = url;
-		    
+		    pageScroll();
 		}
 	}
 
@@ -147,9 +147,7 @@
 	   
 	  width: 1000px; 
 	  height: 100px; 
-	  display: table;
-	  padding-top: 5px;
-	  padding-bottom: 5px; 
+	  display: table; 
 	}
 
 	.bubble img {
@@ -196,11 +194,6 @@
 <body onload="init_mt()">
 	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
 	   
-		<div class="area" id="list_field">
-			
-		</div>
-		
-
 	</div>
 
 

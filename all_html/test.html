@@ -1,16 +1,186 @@
-<!doctype html>
+
 <html>
-  <head>
-    <title>Search</title>
-  </head>
-  <body>
-    <div id="buttons">
-      <label> <input id="query" value='cats' type="text"/><button id="search-button" onclick="search()">Search</button></label>
-    </div>
-    <div id="search-container">
-    </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="search.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-  </body>
+
+ <script src="static/js/mousetrap.js">
+ </script> 
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+ <script type="text/javascript">
+
+ 	var LEN = -1
+
+ 	function pageScrollDown() {
+    	window.scrollBy(0,50); // horizontal and vertical scroll increments
+    	
+	}
+
+	function pageScrollUp() {
+    	window.scrollBy(0,-50); // horizontal and vertical scroll increments
+    	
+	}
+
+ 	function dosomethingdown(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = len-1;
+		    }else{
+		    	LEN = LEN - 1;
+		    }
+
+		    if(LEN == 0){
+		    	LEN = len
+		    	window.scroll(0,0);
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		    pageScrollDown();
+		}
+	}
+
+	function dosomethingup(){
+
+ 		//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    
+		    if(LEN == -1){
+		    	LEN = 1;
+		    }else{
+		    	LEN = LEN + 1;
+		    }
+
+		    if(LEN == len+1){
+		    	LEN = 1
+		    	window.scrollBy(0,10000);
+		    }
+
+		    console.log(LEN);
+		    //console.log(nextItem);
+		    // var nextItem =  currentItem.next();
+		    var nextItem = currentZone.children()[len - LEN]
+
+		    $(currentItem).removeClass("nav-current-item");
+		    $(nextItem).addClass("nav-current-item");
+		    pageScrollUp();
+		}
+	}
+
+
+	function dosomethingenter(){
+			//alert("hello");
+
+		if($(".nav-current-zone").data("nav-type") === "list"){
+		    //console.log($("#maintabs"));
+		    var currentZone = $("#maintabs");
+		    var currentItem = currentZone.find(".nav-current-item");
+		    //console.log(currentItem);
+		    
+		    var len = currentZone.children().length;
+		    var url = $(currentItem.children()[0]).attr("href")
+		    console.log(url);
+		    window.location = url;
+		    pageScroll();
+		}
+	}
+
+	function init_mt(){
+		var currentZone = $("#maintabs");
+		var firstChild = currentZone.children()[0]
+		$(firstChild).addClass("nav-current-item");
+
+
+		Mousetrap.bind('down', function() { dosomethingdown(); });
+		Mousetrap.bind('up', function() { dosomethingup(); });
+		Mousetrap.bind('enter', function() { dosomethingenter(); });
+	}
+</script>
+
+<style type="text/css">
+
+	
+
+	.tab {
+		color: red;
+	}
+	
+
+
+
+	.title {
+		color: white;
+		padding-left: 10px;
+	}
+
+	.desc {
+		color: white;
+		padding-left: 10px;
+	}
+
+	a:link{
+	  color:none;
+	}
+	a:visited{
+	  color:none;
+	}
+	a:hover{
+	  color:none;
+	}
+	a:focus{
+	  color:none;
+	}
+	a:active{
+	  color:none;
+	}
+
+	
+
+
+</style>
+
+
+<body onload="init_mt()">
+	<div id="maintabs" class="tabs nav-current-zone" data-nav-type="list" >
+	    <ul>
+	    	<li>
+	    		test
+	    	</li>
+	    	<li>
+	    		test
+	    	</li>
+	    	<li>
+	    		test
+	    	</li>
+	    	<li>
+	    		test
+	    	</li>
+
+	    </ul>
+
+	</div>
+
+
+</body>
 </html>

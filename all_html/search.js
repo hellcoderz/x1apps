@@ -14,9 +14,9 @@ function add_result_to_list(response){
         var image_url = item["snippet"]["thumbnails"]["high"]["url"]
 
 
-        var tag_str = "<a href='"+url+"' id='"+i+"'><div class='bubble'><img src='"+image_url+"' width='100px' height='100px' style='float:left'></img><div><div class='title'><strong>"+title+"</strong></div><div class='desc'>"+desc+"</div></div></div></a>";
+        var tag_str = "<div class='area'> <a href='"+url+"' id='"+i+"'><div class='bubble'><img src='"+image_url+"' width='100px' height='100px' style='float:left'></img><div><div class='title'><strong>"+title+"</strong></div><div class='desc'>"+desc+"</div></div></div></a></div>";
 
-        $(".area").append(tag_str);
+        $("#maintabs").append(tag_str);
       }
       
     }
@@ -63,7 +63,7 @@ function search() {
     console.log(res["items"]);
     var str = JSON.stringify(response.result);
     add_result_to_list(res)
-    var currentZone = $("#list_field");
+    var currentZone = $("#maintabs");
     var firstChild = currentZone.children()[0]
     console.log(firstChild)
     $(firstChild).addClass("nav-current-item");
