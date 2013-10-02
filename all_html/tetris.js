@@ -421,7 +421,7 @@ var
 		{
 			clearInterval(tetris.intval);
 
-			tetris.message.innerHTML = '<p>Game over <span>Press Spacebar to continue</span</p>';
+			tetris.message.innerHTML = '<p>Game over <span>Press 2 to continue</span</p>';
 
 			tetris.gameOver = true;
 		},
@@ -461,7 +461,7 @@ var
 
 						if ( tetris.paused )
 						{
-							tetris.message.innerHTML = '<p>Paused <span>Press Esc to resume</span</p>';
+							tetris.message.innerHTML = '<p>Paused <span>Press 2 to resume</span</p>';
 						}
 						else
 						{
