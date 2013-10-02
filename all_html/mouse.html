@@ -1,0 +1,28 @@
+<html>
+
+<script src="mousetrap.js"></script> 
+
+ <script type="text/javascript">
+
+	function doSomething(){
+			alert("hello");
+
+	}
+
+	function init_mt(){
+		Mousetrap.bind('enter', function() { doSomething(); });
+		
+		
+	}
+
+
+</script>
+
+
+
+<body onload="init_mt()">
+<button onclick="doSomething()">click</button>
+
+
+</body>
+</html>

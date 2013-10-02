@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+	<head>
+		<title>Tetris</title>
+
+		<link type="text/css" rel="stylesheet" href="tetris.css"/>
+
+		<script type="text/javascript" src="tetris.js"></script>
+	<head>
+	<body>
+		<div id="tetris">
+			<div id="tetris-wrap">
+				<div id="tetris-wrap-inner">
+					<div id="tetris-main">
+					</div>
+					<div id="tetris-overlay">
+						<div id="tetris-message"></div>
+					</div>
+					<div id="tetris-side">
+						<div id="tetris-side-inner">
+							<div id="tetris-next">
+								<div id="tetris-next-inner"></div>
+							</div>
+							<div id="tetris-scores">
+								<dl>
+									<dt>Level:</dt>
+									<dd id="tetris-level">1</dd>
+								</dl>
+								<dl>
+									<dt>Score:</dt>
+									<dd id="tetris-score">0</dd>
+								</dl>
+								<dl>
+									<dt>Singles:</dt>
+									<dd id="tetris-singles">0</dd>
+								</dl>
+								<dl>
+									<dt>Doubles:</dt>
+									<dd id="tetris-doubles">0</dd>
+								</dl>
+								<dl>
+									<dt>Triples:</dt>
+									<dd id="tetris-triples">0</dd>
+								</dl>
+								<dl>
+									<dt>Tetris:</dt>
+									<dd id="tetris-quads">0</dd>
+								</dl>
+
+								<div class="clear"></div>
+							</div>
+							<div id="tetris-keys">
+								<dl>
+									<dt>Move:</dt>
+									<dd>&larr; &darr; &rarr;<dd>
+								</dl>
+								<dl>
+									<dt>Rotate:</dt>
+									<dd>&uarr;<dd>
+								</dl>
+								<dl>
+									<dt>Drop:</dt>
+									<dd>Spacebar<dd>
+								</dl>
+								<dl>
+									<dt>Pauze:</dt>
+									<dd>Pauze/Esc<dd>
+								</dl>
+
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<p id="tetris-copyright">
+					Try <a href="http://readable.cc">Readable.cc RSS Reader</a> | By <a href="/">Elbert Alias</a> 2009 | Released under <a href="http://opensource.org/licenses/gpl-3.0.html">GPL</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- -->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-216336-22']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		<!-- -->
+
+		<!-- Piwik -->
+		<script type="text/javascript">
+			var _paq = _paq || [];
+			_paq.push(["trackPageView"]);
+			_paq.push(["enableLinkTracking"]);
+
+			(function() {
+				var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.alias.io/";
+				_paq.push(["setTrackerUrl", u+"piwik.php"]);
+				_paq.push(["setSiteId", "2"]);
+				var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+				g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+			})();
+		</script>
+		<!-- End Piwik Code -->
+	</body>
+</html>
